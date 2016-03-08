@@ -40,10 +40,12 @@ public class MainActivity extends Activity implements AdapterView.OnClickListene
 
     private void initMediaPlayer() {
         try {
-            File file = new File(Environment.getExternalStorageDirectory(), "music.mp3");
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+            String fileName = "music.mp3";
+            File file = new File(baseDir + File.separator + fileName);
             Toast.makeText(this, file.getPath().toString(), Toast.LENGTH_LONG).show();
 
-            mediaPlayer.setDataSource(file.getPath());
+            mediaPlayer.setDataSource(file.getPath().toString());
             mediaPlayer.prepare();
         } catch (Exception e) {
             //e.printStackTrace();
